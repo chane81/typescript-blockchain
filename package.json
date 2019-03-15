@@ -4,7 +4,15 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
+		"dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
+		"dev:tscwatch": "tsc-watch --onSuccess \" node dist/index.js\" ",
 		"start": "node index.js",
 		"prestart": "tsc"
+	},
+	"dependencies": {
+		"typescript": "^3.3.3333"
+	},
+	"devDependencies": {
+		"tsc-watch": "^2.1.2"
 	}
 }
