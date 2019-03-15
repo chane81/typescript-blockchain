@@ -12,22 +12,47 @@
 
 
 // 인터페이스 사용
-interface Human {
-	name: string;
-	age: number;
-	gender: string;
+// interface Human {
+// 	name: string;
+// 	age: number;
+// 	gender: string;
+// }
+
+// const person = {
+// 	name: 'lee',
+// 	age: 7,
+// 	gender: 'male'
+// }
+
+// const sayHi = (presonInfo: Human): string => {
+// 	return `Hello ${presonInfo.name}, you are ${presonInfo.age}, you are a ${presonInfo.gender}`;
+// };
+
+// console.log(sayHi(person));
+
+// export {};
+
+
+
+// 클래스 사용
+class Human {
+	public name: string;
+	public age: number;
+	public gender: string;
+
+	constructor(name: string, age: number, gender: string) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
 }
 
-const person = {
-	name: 'lee',
-	age: 7,
-	gender: 'male'
-}
+const lee = new Human('lee', 5, 'male')
 
 const sayHi = (presonInfo: Human): string => {
 	return `Hello ${presonInfo.name}, you are ${presonInfo.age}, you are a ${presonInfo.gender}`;
 };
 
-console.log(sayHi(person));
+console.log(sayHi(lee));
 
 export {};
