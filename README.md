@@ -41,8 +41,9 @@
     ```json
     "scripts": {
       "dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
-      "start": "node index.js",
-      "prestart": "tsc"
+		  "dev:tscwatch": "tsc-watch --onSuccess \" node dist/index.js\" ",
+		  "start": "node index.js",
+		  "prestart": "tsc"
     }
     ```
 
