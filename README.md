@@ -1,4 +1,4 @@
-# typescript
+# typescript block chain
 
 ## yarn
   - typescript 글로벌 설치
