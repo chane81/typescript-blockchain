@@ -78,28 +78,41 @@ const createNewBlock = (data: string): Block => {
 	);
 
 	// 블럭체인에 push
-	blockchain.push(newBlock);
+	addBlock(newBlock);
 
 	return newBlock;
 };
 
-// block validate 체크
-const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
-	if (!Block.validateStructure(candidateBlock)) {
-		return false;
-	} else if (previousBlock.index + 1 !== candidateBlock.index) {
-		return false;
-	} else if (previousBlock.hash !== candidateBlock.previousHash) {
-		return false;
-	} else {
-		return true;
+// get block hash
+const getHashForBlock = (aBlock: Block): string =>
+	Block.calculateBlockHash(
+		aBlock.index,
+		aBlock.previousHash,
+		aBlock.timestamp,
+		aBlock.data
+	);
+
+// get block validate 체크
+const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean =>
+
+		!Block.validateStructure(candidateBlock) ? false :
+		previousBlock.index + 1 !== candidateBlock.index ? false :
+		previousBlock.hash !== candidateBlock.previousHash ? false :
+		getHashForBlock(candidateBlock) !== candidateBlock.hash ? false :
+		true;
+
+// set block add
+const addBlock = (candidateBlock: Block): void => {
+	if (isBlockValid(candidateBlock, getLatestBlock())) {
+		blockchain.push(candidateBlock);
 	}
 };
 
-const preBlock = createNewBlock('hello');
-const nowBlock = createNewBlock('yap yap');
+// block 생성
+createNewBlock('second block');
+createNewBlock('third block');
+createNewBlock('fourth block');
 
-console.log(isBlockValid(nowBlock, preBlock));
-console.log(preBlock, nowBlock);
+console.log(blockchain);
 
 export {};
