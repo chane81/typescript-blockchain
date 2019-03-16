@@ -1,7 +1,28 @@
 # typescript
 
 ## yarn
-  > yarn global add typescript
+  - typescript 글로벌 설치
+    > yarn global add typescript
+
+  - tslint 설치
+    > yarn add tslint
+
+  - 해쉬 계산 라이브러리 설치
+    > yarn add crypto-js
+
+## tslint 를 위한 설정
+  - settings.json, tslint auto save를 할려면 다른 auto save 를 꺼야함
+  ```json
+  "editor.formatOnSave": false,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.autoFixOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  ```
+
 
 ## tsconfig.json 파일 생성
   > tsc --init
